@@ -137,11 +137,40 @@ tcp:
 
 
 
-## Other:
+## Other
 ``` yaml
 ## Jaeger tracing
 tracing:
   jaeger:
     localAgentHostPort: 127.0.0.1:6831
+```
+
+``` yaml
+## Basic Authorization
+http:
+    routers:
+        allBackendRouter:
+            rule: "Host(`localhost`)"
+            service: allBackend
+        allBackendRouterSecured:
+            entryPoints:
+                - http
+            middlewares: 
+                - auth
+            rule: "(PathPrefix(`/dashboard`) || PathPrefix(`/api`))"
+            service: api@internal
+            
+    services:
+        allBackend:
+            loadBalancer:
+                servers:
+                    - url: "http://localhost:1111/"
+                    - url: "http://localhost:2222/"
+                passHostHeader: false        
+    middlewares:
+        auth:
+            basicAuth:
+                users: 
+                    - "admin:{SHA}2iRQKCF1byRkk6qCLh1AdHhU1tQ="
 ```
 

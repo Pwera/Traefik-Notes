@@ -1,0 +1,26 @@
+entryPoints:
+    http:
+        address: ":80"
+   
+providers:
+    file:
+        filename: examples/auth.yaml
+        watch: true
+
+api:
+    dashboard: true
+    # insecure: true
+
+tracing:
+  jaeger:
+    localAgentHostPort: 127.0.0.1:6831
+    samplingType: const
+    traceContextHeaderName: super-trace-id
+
+log:
+  filePath: "traefik.log"
+  level: DEBUG
+
+accessLog:
+    filePath: "traefik-access.log"
+    bufferingSize: 100
