@@ -1,0 +1,11 @@
+tcp:
+    routers:
+        allBackendRouter:
+            rule: "HostSNI(`*`)"
+            service: allBackend
+    services:
+        allBackend:
+            loadBalancer:
+                servers:
+                    - address: "localhost:1111"
+                    - address: "localhost:2222"

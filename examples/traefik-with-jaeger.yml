@@ -1,0 +1,13 @@
+# Static configuration
+entrypoints:
+    unsecure:
+        address: :80 #same as 0.0.0.0:80
+
+providers:
+    file:
+        filename: examples/split.yaml
+        watch: true
+        
+tracing:
+  jaeger:
+    localAgentHostPort: 127.0.0.1:6831

@@ -1,0 +1,20 @@
+http:
+    routers:
+        secureBackendRouter:
+            rule: "Host(`knowledgecenter.pl`)"
+            service: allBackend
+            tls:
+                certResolver: myresolver
+                options: tlsoptions
+    services:
+        allBackend:
+            loadBalancer:
+                servers:
+                    - url: "http://knowledgecenter.pl:1111/"
+                    - url: "http://knowledgecenter.pl:2222/"
+
+
+tls:
+    options:
+        tlsoptions:
+            minVersion: VersionTLS12

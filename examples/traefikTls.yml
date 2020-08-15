@@ -1,0 +1,22 @@
+entrypoints:
+    unsecure:
+        address: :80
+    secure:
+        address: :443
+
+certificateResolves:
+    myresolver:
+        acme:
+            email: me@mysite.com
+            storage: acme.json
+            httpChallenge:
+                entryPoint: secure
+    
+providers:
+    file:
+        filename: examples/tls.yaml
+        watch: true
+
+tracing:
+  jaeger:
+    localAgentHostPort: 127.0.0.1:6831

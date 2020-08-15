@@ -1,0 +1,12 @@
+entrypoints:
+    unsecure:
+        address: :80
+    
+providers:
+    file:
+        filename: examples/all.yaml
+        watch: true
+
+tracing:
+  jaeger:
+    localAgentHostPort: 127.0.0.1:6831

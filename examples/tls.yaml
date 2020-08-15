@@ -1,0 +1,13 @@
+http:
+    routers:
+        secureBackendRouter:
+            rule: "Host(`knowledgecenter.pl`)"
+            service: allBackend
+            tls:
+                certResolver: myresolver
+    services:
+        allBackend:
+            loadBalancer:
+                servers:
+                    - url: "http://knowledgecenter.pl:1111/"
+                    - url: "http://knowledgecenter.pl:2222/"
