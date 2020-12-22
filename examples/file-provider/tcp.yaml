@@ -7,5 +7,5 @@ tcp:
         allBackend:
             loadBalancer:
                 servers:
-                    - address: "localhost:1111"
-                    - address: "localhost:2222"
+                    - address: "$MY_DOMAIN:1111"
+                    - address: "$MY_DOMAIN:2222"
